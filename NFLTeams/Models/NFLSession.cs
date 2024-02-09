@@ -5,6 +5,7 @@ namespace NFLTeams.Models
 {
     public class NFLSession
     {
+        private const string NameKey = "name";
         private const string TeamsKey = "myteams";
         private const string CountKey = "teamcount";
         private const string ConfKey = "conf";
@@ -14,6 +15,12 @@ namespace NFLTeams.Models
         public NFLSession(ISession session) {
             this.session = session;
         }
+
+        public void SetName(string userName)
+        {
+            session.SetString(NameKey, userName);
+        }
+        public string GetName() => session.GetString(NameKey);
 
         public void SetMyTeams(List<Team> teams) {
             session.SetObject(TeamsKey, teams);
